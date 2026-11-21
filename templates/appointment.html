@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% block title %}Book Appointment | Shifa Hospital{% endblock %}{% block body %}
+<div class="page-head"><div class="container"><h1>Book an appointment</h1></div></div>
+<section class="pad"><div class="container" style="max-width:760px">
+<div id="confirm" class="d-none card-x text-center"><i class="bi bi-check-circle-fill text-success display-3"></i><h3>You're booked</h3><p id="confirm-msg"></p><p class="text-mute">A confirmation will be sent to your email. Please arrive 15 minutes early.</p><a class="btn btn-teal" href="/portal">View my appointments</a></div>
+<form class="row g-3 needs-validation" novalidate data-api="/api/appointments" data-confirm="1">
+<div class="col-md-6"><label class="form-label">Full name</label><input name="full_name" class="form-control" required minlength="3" value="{{ me.full_name if me }}"><div class="invalid-feedback">Enter your full name.</div></div>
+<div class="col-md-6"><label class="form-label">Email address</label><input type="email" name="email" class="form-control" required value="{{ me.email if me }}"><div class="invalid-feedback">Enter a valid email.</div></div>
+<div class="col-md-6"><label class="form-label">Phone number</label><input name="phone" class="form-control" required pattern="[0-9+\-\s]{10,15}" value="{{ me.phone or '' if me }}"><div class="invalid-feedback">Enter 10 to 15 digits.</div></div>
+<div class="col-md-6"><label class="form-label">Department</label><select id="apptDept" class="form-select" required data-pre="{{pre_dept}}" data-doc="{{pre_doc}}"><option value="">Select department</option>{% for d in depts %}<option value="{{d.id}}">{{d.name}}</option>{% endfor %}</select><div class="invalid-feedback">Choose a department.</div></div>
+<div class="col-md-6"><label class="form-label">Doctor</label><select id="apptDoc" name="doctor_id" class="form-select" required><option value="">Select department first</option></select><div class="invalid-feedback">Choose a doctor.</div></div>
+<div class="col-md-6"><label class="form-label">Preferred date</label><input type="date" id="apptDate" name="appt_date" class="form-control" required><div class="invalid-feedback">Choose a date.</div></div>
+<div class="col-md-6"><label class="form-label">Time slot</label><select id="apptSlot" name="slot" class="form-select" required><option value="">Choose doctor and date first</option></select><div class="invalid-feedback">Choose a slot.</div></div>
+<div class="col-12"><label class="form-label">Reason for appointment</label><textarea name="reason" rows="3" class="form-control" required minlength="5"></textarea><div class="invalid-feedback">Briefly describe the reason.</div></div>
+<div class="col-12"><button class="btn btn-teal btn-lg">Submit Appointment</button></div></form></div></section>{% endblock %}

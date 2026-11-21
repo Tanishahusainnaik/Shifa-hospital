@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% block title %}Contact | Shifa Hospital{% endblock %}{% block body %}
+<div class="page-head"><div class="container"><h1>Contact us</h1></div></div>
+<section class="pad"><div class="container"><div class="row g-4"><div class="col-lg-5">
+<div class="card-x mb-3"><p><i class="bi bi-geo-alt text-info"></i> 24 Lakeview Road, Vijayapura, Karnataka 586101</p><p><i class="bi bi-telephone text-info"></i> +91 83522 40000</p><p><i class="bi bi-envelope text-info"></i> care@shifahospital.in</p>
+<p><i class="bi bi-exclamation-triangle text-danger"></i> Emergency helpline: <a href="tel:+919535859746">+91 95358 59746</a></p><p class="mb-0"><i class="bi bi-clock text-info"></i> OPD: Mon to Sat, 9 AM to 6 PM<br>Emergency, ICU and pharmacy: 24/7</p></div>
+<iframe class="w-100 rounded-4 border-0" height="260" loading="lazy" title="Map" src="https://www.google.com/maps?q=Vijayapura,Karnataka&output=embed"></iframe></div>
+<div class="col-lg-7"><form class="card-x row g-3 needs-validation" novalidate data-api="/api/contact" data-reset>
+<div class="col-md-6"><input name="name" class="form-control" placeholder="Your name" required minlength="2"></div><div class="col-md-6"><input type="email" name="email" class="form-control" placeholder="Email" required></div>
+<div class="col-12"><input name="subject" class="form-control" placeholder="Subject"></div><div class="col-12"><textarea name="body" rows="5" class="form-control" placeholder="How can we help?" required minlength="10"></textarea></div>
+<div class="col-12"><button class="btn btn-teal">Send message</button></div></form></div></div></div></section>{% endblock %}

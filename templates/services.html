@@ -1,0 +1,12 @@
+{% extends 'base.html' %}{% block title %}Services | Shifa Hospital{% endblock %}{% block body %}
+<div class="page-head"><div class="container"><h1>Services</h1><p class="text-mute mb-0">Everything you need, from emergency to recovery.</p></div></div>
+<section class="pad"><div class="container"><div class="row g-4">
+{% for i,t,x,l,h in [('bi-lightning-charge','24/7 Emergency Care','Trauma, cardiac and stroke teams on site at all times.','Call +91 95358 59746','tel:+919535859746'),
+('bi-eyedropper','Laboratory Testing','NABL-accredited tests with reports in 6 hours and home collection.','Book a test','/appointment'),
+('bi-radar','Diagnostic Imaging','MRI, CT, ultrasound, X-ray and digital mammography.','Book a scan','/appointment'),
+('bi-truck','Ambulance Services','ICU-equipped ambulances with trained paramedics.','Call +91 83522 40108','tel:+918352240108'),
+('bi-capsule','Pharmacy','Open 24/7 with free delivery within 10 km.','Contact pharmacy','/contact'),
+('bi-heart-pulse-fill','Intensive Care Unit','60 beds with 1:1 nursing and continuous monitoring.','Ask about ICU','/contact'),
+('bi-scissors','Surgical Services','Minimally invasive and robotic surgery across specialities.','Consult a surgeon','/doctors?dept=Orthopaedics'),
+('bi-clipboard2-check','Health Checkup Packages','Basic, executive and senior-citizen packages from Rs. 1,499.','Book a checkup','/appointment')] %}
+<div class="col-md-6 col-lg-3"><div class="card-x"><div class="ico"><i class="bi {{i}}"></i></div><h5>{{t}}</h5><p class="text-mute">{{x}}</p><a href="{{h}}">{{l}}</a></div></div>{% endfor %}</div></div></section>{% endblock %}

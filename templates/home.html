@@ -1,0 +1,23 @@
+{% extends 'base.html' %}{% block body %}
+<header class="hero"><div class="container"><div class="row"><div class="col-lg-7">
+<h1>Your Health, Our Priority.</h1>
+<p class="lead my-4">Shifa Hospital is a 350-bed multispeciality hospital with 10 departments, advanced diagnostics and doctors who take the time to listen.</p>
+<a class="btn btn-teal btn-lg me-2 mb-2" href="/appointment">Book an Appointment</a><a class="btn btn-outline-light btn-lg mb-2" href="/services">Explore Our Services</a>
+<div class="mt-4"><a class="sos" href="tel:+919535859746"><i class="bi bi-telephone-fill fs-4"></i><span><small class="d-block">24/7 Emergency</small><b>+91 95358 59746</b></span></a></div></div></div></div>
+<svg class="pulse" viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0 40h380l20-30 25 60 25-60 20 30h260l20-35 25 70 25-70 20 35h400" fill="none" stroke="#5eead4" stroke-width="3"/></svg></header>
+<div class="container stats"><div class="row g-3 text-center">
+{% for n,l in [('25+','Years of experience'),('120+','Specialist doctors'),('2.5L+','Patients treated'),('10','Departments')] %}<div class="col-6 col-lg-3"><div class="stat"><b>{{n}}</b>{{l}}</div></div>{% endfor %}</div></div>
+<section class="pad"><div class="container"><h2>Featured medical services</h2><p class="text-mute mb-4">Fast, coordinated care under one roof.</p><div class="row g-4">
+{% for d in depts %}<div class="col-md-6 col-lg-4"><div class="card-x"><div class="ico"><i class="bi {{d.icon}}"></i></div><h5>{{d.name}}</h5><p class="text-mute">{{d.description}}</p><a href="/doctors?dept={{d.name}}">See doctors</a></div></div>{% endfor %}</div></div></section>
+<section class="pad bg-sky"><div class="container"><h2 class="mb-4">Why choose Shifa Hospital</h2><div class="row g-4">
+{% for i,t,x in [('bi-award','NABH accredited','Quality and safety standards audited every year.'),('bi-cpu','Advanced technology','3T MRI, 128-slice CT and robotic surgery.'),('bi-clock-history','Open 24/7','Emergency, ICU, pharmacy and lab never close.'),('bi-cash-coin','Transparent pricing','Written estimates before every procedure.')] %}
+<div class="col-md-6 col-lg-3"><div class="card-x"><div class="ico"><i class="bi {{i}}"></i></div><h5>{{t}}</h5><p class="text-mute mb-0">{{x}}</p></div></div>{% endfor %}</div></div></section>
+<section class="pad"><div class="container"><div class="d-flex justify-content-between align-items-end mb-4"><h2 class="mb-0">Top specialist doctors</h2><a href="/doctors">All doctors</a></div><div class="row g-4">
+{% for d in docs %}<div class="col-sm-6 col-lg-3"><div class="card-x text-center"><div class="avatar mx-auto">{{ d.name.split()[1][0] }}{{ d.name.split()[-1][0] }}</div><h5>{{d.name}}</h5><span class="badge badge-teal">{{d.dept}}</span><p class="text-mute small mt-2">{{d.experience}} years experience</p><a class="btn btn-line btn-sm" href="/doctors/{{d.id}}">View Profile</a></div></div>{% endfor %}</div></div></section>
+<section class="pad bg-sky"><div class="container"><h2 class="mb-4">What patients say</h2><div class="row g-4">
+{% for n,t in [('Rekha S.','My father had a bypass here. The cardiology team explained every step and the nurses were wonderful.'),('Farhan A.','Booked online and was seen within ten minutes of arriving. No confusion at billing either.'),('Meena K.','The paediatric ward made my daughter feel safe. We now bring both kids here.')] %}
+<div class="col-md-4"><div class="card-x quote"><p>&ldquo;{{t}}&rdquo;</p><b>{{n}}</b><div class="text-warning">★★★★★</div></div></div>{% endfor %}</div></div></section>
+<section class="pad"><div class="container"><h2 class="mb-4">Latest health articles</h2><div class="row g-4">
+{% for i,t,x in [('bi-heart','Five habits that protect your heart','Small daily changes that lower blood pressure and cholesterol.'),('bi-moon-stars','Sleep and immunity','Why seven hours matters more than another supplement.'),('bi-egg-fried','Managing diabetes through food','Plate-building basics from our clinical nutrition team.')] %}
+<div class="col-md-4"><div class="card-x"><div class="ico"><i class="bi {{i}}"></i></div><h5>{{t}}</h5><p class="text-mute">{{x}}</p><a href="/search?q=General">Talk to a doctor</a></div></div>{% endfor %}</div></div></section>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block title %}Doctors | Shifa Hospital{% endblock %}{% block body %}
+<div class="page-head"><div class="container"><h1>Our doctors</h1><div class="row g-2 mt-3"><div class="col-md-6"><input id="docSearch" class="form-control" placeholder="Search by name"></div>
+<div class="col-md-4"><select id="docDept" class="form-select"><option value="">All specialisations</option>{% for d in depts %}<option>{{d.name}}</option>{% endfor %}</select></div></div></div></div>
+<section class="pad"><div class="container"><div class="row g-4">{% for d in docs %}
+<div class="col-md-6 col-lg-4 doc" data-dept="{{d.dept}}" data-name="{{d.name|lower}}"><div class="card-x"><div class="avatar">{{ d.name.split()[1][0] }}{{ d.name.split()[-1][0] }}</div><h5>{{d.name}}</h5><span class="badge badge-teal">{{d.dept}}</span>
+<p class="small text-mute mt-2 mb-3">{{d.qualification}}<br>{{d.experience}} years experience<br><i class="bi bi-calendar-check"></i> {{d.availability}}</p>
+<a class="btn btn-line btn-sm" href="/doctors/{{d.id}}">View Profile</a> <a class="btn btn-teal btn-sm" href="/appointment?dept={{d.department_id}}&doctor={{d.id}}">Book Appointment</a></div></div>{% endfor %}</div>
+<p id="docEmpty" class="d-none text-center text-mute">No doctors match. Clear the search or choose another specialisation.</p></div></section>
+<script>const p=new URLSearchParams(location.search).get('dept');if(p){docDept.value=p;docDept.dispatchEvent(new Event('change'))}</script>{% endblock %}

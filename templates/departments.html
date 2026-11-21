@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block title %}Departments | Shifa Hospital{% endblock %}{% block body %}
+<div class="page-head"><div class="container"><h1>Departments</h1><p class="text-mute mb-0">Ten specialities, one connected team.</p></div></div>
+<section class="pad"><div class="container"><div class="row g-4">{% for d in depts %}
+<div class="col-md-6 col-lg-4"><div class="card-x"><div class="ico"><i class="bi {{d.icon}}"></i></div><h5>{{d.name}}</h5><p class="text-mute">{{d.description}}</p><a class="btn btn-line btn-sm" href="/doctors?dept={{d.name}}">Learn More</a></div></div>{% endfor %}</div></div></section>{% endblock %}

@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block body %}<section class="pad"><div class="container"><h2>Results for &ldquo;{{term}}&rdquo;</h2>
+{% for d in depts %}<p><i class="bi {{d.icon}} text-info"></i> <a href="/doctors?dept={{d.name}}">{{d.name}}</a> <span class="text-mute">{{d.description}}</span></p>{% endfor %}
+{% for d in docs %}<p><i class="bi bi-person-badge text-info"></i> <a href="/doctors/{{d.id}}">{{d.name}}</a> <span class="text-mute">{{d.dept}}, {{d.experience}} yrs</span></p>{% endfor %}
+{% if not docs and not depts %}<p class="text-mute">Nothing found. Try a department such as Cardiology or a doctor's name.</p>{% endif %}</div></section>{% endblock %}
